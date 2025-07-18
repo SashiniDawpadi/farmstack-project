@@ -43,7 +43,6 @@ async def get_todo_by_title(title):
 
 @app.post("/api/todo", response_model=Todo)
 async def post_todo(todo:Todo):
-    print(todo)
     response = await create_todo(todo.model_dump())
     if response:
         return response

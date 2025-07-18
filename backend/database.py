@@ -19,7 +19,7 @@ async def fetch_all_todos():
         todos.append(Todo(**document))
     return todos
 
-async def create_todo(todo):
+async def create_todo(todo: dict) -> dict:
     result = await collection.insert_one(todo)
     new_todo = await collection.find_one({"_id":result.inserted_id})
     return {
